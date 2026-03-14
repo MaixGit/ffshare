@@ -193,8 +193,8 @@ class EncodingService : Service() {
         val ffmpegParams = ffmpegParamMaker.create(inputUri, mediaInfo, mediaType, outputMediaType)
         val inputSaf = FFmpegKitConfig.getSafParameterForRead(this, inputUri)
         val outputSaf = FFmpegKitConfig.getSafParameterForWrite(this, outputUri)
-        val command = "-y -i $inputSaf $ffmpegParams $outputSaf"
-        val prettyCommand = "ffmpeg -y -i $inputFileName $ffmpegParams ${outputFile.name}"
+        val command = "-y -hwaccel mediacodec -i $inputSaf $ffmpegParams $outputSaf"
+        val prettyCommand = "ffmpeg -y -hwaccel mediacodec -i $inputFileName $ffmpegParams ${outputFile.name}"
 
         Timber.i("Encoding $inputFileName")
         Timber.d("Executing: $prettyCommand")
