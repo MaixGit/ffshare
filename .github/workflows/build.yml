@@ -24,12 +24,12 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug
-        env:
-          FFSHARE_RELEASE_STORE_FILE: "none"
-          FFSHARE_RELEASE_STORE_PASSWORD: "none"
-          FFSHARE_RELEASE_KEY_ALIAS: "none"
-          FFSHARE_RELEASE_KEY_PASSWORD: "none"
+        run: >
+          ./gradlew assembleDebug
+          -PFFSHARE_RELEASE_STORE_FILE=none
+          -PFFSHARE_RELEASE_STORE_PASSWORD=none
+          -PFFSHARE_RELEASE_KEY_ALIAS=none
+          -PFFSHARE_RELEASE_KEY_PASSWORD=none
 
 #      - name: Build release APK
 #        run: ./gradlew assembleRelease
