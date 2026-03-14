@@ -110,8 +110,8 @@ class MediaCompressor(private val context: Context) {
         val ffmpegParams = ffmpegParamMaker.create(inputFileUri, mediaInformation, mediaType, outputMediaType)
         val inputSaf: String = FFmpegKitConfig.getSafParameterForRead(context, inputFileUri)
         val outputSaf: String = FFmpegKitConfig.getSafParameterForWrite(context, outputFileUri)
-        val command = "-y -i $inputSaf $ffmpegParams $outputSaf"
-        val prettyCommand = "ffmpeg -y -i $inputFileName $ffmpegParams ${outputFile.name}"
+        val command = "-y -hwaccel mediacodec -i $inputSaf $ffmpegParams $outputSaf"
+        val prettyCommand = "ffmpeg -y -hwaccel mediacodec -i $inputFileName $ffmpegParams ${outputFile.name}"
 
         // set TextViews
         Handler(Looper.getMainLooper()).post {
